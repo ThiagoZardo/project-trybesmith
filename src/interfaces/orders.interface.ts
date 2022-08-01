@@ -3,3 +3,12 @@ export interface Order {
   userId: number;
   productsIds: number[];
 }
+
+export type OrderRequestCreate = {
+  productsIds: number[];
+};
+
+export interface OrderCreate {
+  userId: number;
+  productsIds: number[]
+}
