@@ -1,6 +1,6 @@
 import connection from '../models/connection';
 import UsersModel from '../models/users.model';
-import User from '../interfaces/user.interface';
+import { User } from '../interfaces/user.interface';
 import jwt from '../utils/jwt';
 
 class UsersService {
@@ -12,7 +12,14 @@ class UsersService {
 
   public async create(user: User): Promise<string> {
     const userCreated = await this.model.create(user);
-    const token = await jwt.generateToken(userCreated);
+    const { id, username, classe, level } = userCreated;
+    const newUser = { 
+      id,
+      username,
+      classe,
+      level,
+    };
+    const token = await jwt.generateToken(newUser);
     return token;
   }
 }

@@ -1,4 +1,4 @@
-interface User {
+export interface User {
   id?: number;
   username: string;
   classe: number;
@@ -6,4 +6,9 @@ interface User {
   password: string;
 }
 
-export default User;
+export interface UserPasswordHiden {
+  id?: number;
+  username: string;
+  classe: number;
+  level: number;
+}

@@ -1,5 +1,5 @@
 import jwt, { SignOptions } from 'jsonwebtoken';
-import User from '../interfaces/user.interface';
+import { UserPasswordHiden } from '../interfaces/user.interface';
 
 const JWT_SECRET = '123456';
 
@@ -8,7 +8,7 @@ const verifyToken = (token: string) => {
   return validate;
 };
 
-const generateToken = async (user: User) => {
+const generateToken = async (user: UserPasswordHiden) => {
   const jwtConfig: SignOptions = {
     algorithm: 'HS256',
     expiresIn: '12h',

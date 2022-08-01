@@ -8,6 +8,11 @@ export default class OrdersModel {
     this.connection = connection;
   }
 
+  /* A função MySQL JSON_ ARRAYAGG() utilizada na classe getAll() agrega o conteúdo da coluna especificada 
+    (ou, dada expressão) como um único array. 
+    Se as colunas especificadas não tiverem linhas, esta função retornará NULL
+    https://www.tutorialspoint.com/mysql/mysql_aggregate_functions_json_arraygg.htm */
+
   public async getAll(): Promise<Order[]> {
     const [result] = await this.connection.execute(
       `SELECT O.id, O.userId, JSON_ARRAYAGG(P.id) AS productsIds
@@ -16,7 +21,6 @@ export default class OrdersModel {
       GROUP BY Trybesmith.O.id 
       ORDER BY O.userId`,
     );
-    console.log(result);
     return result as Order[];
   }
 }
