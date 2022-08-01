@@ -24,7 +24,7 @@ const productValidateAmount = (req: Request, res: Response, next: NextFunction) 
   next();
 };
 
-export default {
+export {
   productValidateName,
   productValidateAmount,
 };
